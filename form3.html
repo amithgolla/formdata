@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Form 3</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <form method="post" autocomplete="off" name="google-sheet">
+        <h2>FORM&nbsp3</h2>
+        Marital Status:
+        <input type="text" placeholder="" name="Marital Status" required><br /><br><br>
+        Highest Education:
+        <input type="text" placeholder="" name="Highest Education" required>
+        <div class="btn-box">
+          <button type="submit" name="Submit">Submit</button>
+        </div>
+      </form>
+    </div>
+    <script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzvUy2a3RnStAr8qamWOKYIGwHvjkDLCtzVe0uOhY3mOsURj-hxbodY/exec'
+const form = document.forms['google-sheet']
+
+form.addEventListener('submit', e => {
+  e.preventDefault()
+  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+    .then(response => alert("Details submitted successfully!"))
+    .catch(error => console.error('Error!', error.message))
+})
+  </script>
+  </body>
+</html>
